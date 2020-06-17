@@ -45,4 +45,21 @@ mod tests {
             )
             .is_ok());
     }
+
+    #[test]
+    fn test_fetch_origin() {
+        use git2::Repository;
+
+        let repo = match Repository::open("/tmp/mygit2") {
+            Ok(repo) => repo,
+            Err(e) => panic!("failed to open: {}", e),
+        };
+        //        assert!(repo.find_remote("origin").is_ok());
+        let mut remote = repo.find_remote("origin").unwrap();
+        match remote.fetch(&["master"], None, None) {
+            Ok(_) => {}
+            Err(e) => panic!("failed to fetch: {}", e),
+            // authentication required but no callback set; class=Ssh (23)
+        }
+    }
 }

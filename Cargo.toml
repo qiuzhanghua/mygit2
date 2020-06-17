@@ -1,0 +1,8 @@
+[package]
+name = "mygit2"
+version = "0.1.0"
+authors = ["Daniel <qiuzhanghua@icloud.com>"]
+edition = "2018"
+
+[dependencies]
+git2 = "0.13"
